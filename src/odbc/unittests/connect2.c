@@ -70,13 +70,13 @@ TEST_MAIN()
 		exit(1);
 
 	/* try setting db name before connect */
-	printf("SQLConnect before 1..\n");
+	printf("SQLConnect before (master)..\n");
 	init_connect();
 	set_dbname("master");
 	normal_connect();
 	check_dbname("master");
 
-	/* check change after connection */
+	/* check changing db name after connection */
 	printf("SQLConnect after..\n");
 	set_dbname("tempdb");
 	check_dbname("tempdb");
@@ -89,14 +89,14 @@ TEST_MAIN()
 	odbc_disconnect();
 
 	/* try setting db name before connect */
-	printf("SQLConnect before 2..\n");
+	printf("SQLConnect before (tempdb)..\n");
 	init_connect();
 	set_dbname("tempdb");
 	normal_connect();
 	check_dbname("tempdb");
 	odbc_disconnect();
 
-	/* try connect string with using DSN */
+	/* try with connect string using DSN */
 	printf("SQLDriverConnect before 1..\n");
 	sprintf(tmp, "DSN=%s;UID=%s;PWD=%s;DATABASE=%s;", common_pwd.server,
 		common_pwd.user, common_pwd.password, common_pwd.database);
@@ -106,7 +106,7 @@ TEST_MAIN()
 	check_dbname(common_pwd.database);
 	odbc_disconnect();
 
-	/* try connect string with using DSN */
+	/* try with connect string using DSN */
 	printf("SQLDriverConnect before 2..\n");
 	sprintf(tmp, "DSN=%s;UID=%s;PWD=%s;", common_pwd.server, common_pwd.user, common_pwd.password);
 	init_connect();
