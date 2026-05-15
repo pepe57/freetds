@@ -553,10 +553,8 @@ dbgetnull(DBPROCESS *dbproc, int bindtype, int varlen, BYTE* varaddr)
 	CHECK_PARAMETER(0 <= bindtype && bindtype < MAXBINDTYPES, SYBEBTYP, FAIL);
 
 	/* dbproc can be NULL */
-	if (NULL != dbproc) {
-		assert(dbproc->nullreps);
+	if (NULL != dbproc)
 		pnullrep = dbproc->nullreps + bindtype;
-	}
 	
 	/* 
 	 * Fixed types: ignore varlen
