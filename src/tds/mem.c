@@ -492,7 +492,7 @@ tds_set_current_results(TDSSOCKET *tds, TDSRESULTINFO *info)
 }
 
 /**
- * Detach result info from it current socket
+ * Detach result info from its current socket
  */
 void
 tds_detach_results(TDSRESULTINFO *info)
